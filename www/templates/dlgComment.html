@@ -1,0 +1,12 @@
+<md-dialog>
+  <md-dialog-content layout="column" layout-align="center center" layout-padding>
+    <md-input-container style="padding-top: 1ex">
+      <label>Kommentar</label>
+      <textarea ng-model="comment"></textarea>
+    </md-input-container>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="closeDialog()">Abbrechen</md-button>
+     <md-button ng-click="send()">OK</md-button>
+  </div>
+</md-dialog>

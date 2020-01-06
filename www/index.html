@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <!--meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <!-- endinject -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- endinject -->
+
+    <title>100 Stunden Aktion 2019</title>
+</head>
+
+<body ng-app="Map100hApp" ng-controller="AppCtrl" layout="column" layout-align="center center" layout-padding>
+    <div layout="column" layout-align="center center" layout-padding>
+        <div>{{getLatitude() | number: 2}}</div>
+        <div>{{getLongitude()  | number: 2}}</div>
+        <div>{{getTimestamp() | date: "medium"}}</div>
+    </div>
+
+    <div>{{errorMessage}}</div>
+
+    <div layout="column" layout-align="center center">
+        <md-switch ng-model="track" ng-change="updateTrack()" style="margin-bottom: 25px">Verfolgen</md-switch>
+        <div layout="row">
+            <md-button ng-click="postFoto()">
+                <md-icon md-svg-icon="camera"></md-icon>
+                <div>Foto</div>
+            </md-button>
+            <md-button ng-click="postFile()">
+                <md-icon md-svg-icon="photoAlbum"></md-icon>
+                <div>Album</div>
+            </md-button>
+            <md-button ng-click="postComment(null)">
+                <md-icon md-svg-icon="comment"></md-icon>
+                <div>Kommentar</div>
+            </md-button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="src/app.js"></script>
+    <script src="src/appCtrl.js"></script>
+    <script src="src/cameraService.js"></script>
+    <script src="src/cordovaService.js"></script>
+    <script src="src/geoService.js"></script>
+    <!-- endinject -->
+
+    <script src="bower_components/angular-i18n/angular-locale_de-de.js"></script>
+</body>
+
+</html>
